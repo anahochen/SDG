@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <title>Random generator</title>
+    </head>
+    <body>
+    {% extends "base.html" %}
+
+    {% block page_content %}
+    <h1>Hello, World!</h1>
+
+    <h3>List of preset series:</h3>
+    {% for s in series %}
+        {{ s }}
+    {% endfor %}
+    <h3>Random result: </h3>
+    <p>Your random series:{{ nom }}</p>
+    <p>Season: {{season}}</p>
+    {% endblock %}
+
+    </body>
+</html>
