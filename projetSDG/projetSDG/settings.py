@@ -25,7 +25,7 @@ SECRET_KEY = '$le2scx+3g0n19#*u+o%_1po6vu+ebe@ke3t_s!8)u_ip_5)$5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1:8000', '.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1:8000', '127.0.0.1','.pythonanywhere.com']
 
 
 # Application definition
@@ -71,6 +71,7 @@ TEMPLATES = [
 TEMPLATES_DIRS = '/Users/anahochen/PycharmProjects/SDG/randomgen/templates'
 
 WSGI_APPLICATION = 'projetSDG.wsgi.application'
+
 
 
 # Database

@@ -1,7 +1,6 @@
 from django.db import models
 import random, datetime
 
-
 # Create your models here.
 
 class Series(models.Model):
@@ -11,9 +10,9 @@ class Series(models.Model):
     def __str__(self):
         return self.series_name
 
-    def pick_random_season(self):
-        r_season = random.randint(1, self.number_seasons)
-        r_episode = r_season.pick_random_episode(r_season)
+    def pick_random_season_episode(self):
+
+        r_episode = random_season.pick_random_episode_number(r_season.episodes)
 
         t_season_episode = [r_season, r_episode]
 
@@ -27,5 +26,5 @@ class Seasons(models.Model):
     episodes = models.IntegerField()
 
     @staticmethod
-    def pick_random_episode(self):
-        return random.randint(range(1, self.episodes))
+    def pick_random_episode_number(episodes):
+        return random.randint(range(1, episodes))
