@@ -10,13 +10,26 @@ class Series(models.Model):
     def __str__(self):
         return self.series_name
 
-    def pick_random_season_episode(self):
+    def pick_random_season_episode(self, number_seasons):
 
-        r_episode = random_season.pick_random_episode_number(r_season.episodes)
+        random_season = self.pick_random_season()
 
-        t_season_episode = [r_season, r_episode]
+        # IDEALLY
+        # find the Season object in order to call the pick_random_episode_number method
+        # using random_season_id
+
+        # QUICK AND NOT ELEGANT AT ALL
+        # generate a random episode number regardless of the season
+
+        random_episode = random.randrange(1,self.number_seasons,1)
+
+        t_season_episode = [random_season, random_episode]
 
         return t_season_episode
+
+    def pick_random_season(self):
+        season_id = random.randrange(1,self.number_seasons,1)
+        return season_id
 
 
 class Seasons(models.Model):
@@ -26,5 +39,5 @@ class Seasons(models.Model):
     episodes = models.IntegerField()
 
     @staticmethod
-    def pick_random_episode_number(episodes):
-        return random.randint(range(1, episodes))
+    def pick_random_episode_number(self):
+        return random.randrange(1,self.episodes,1)

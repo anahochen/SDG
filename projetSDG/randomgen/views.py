@@ -9,7 +9,7 @@ from django.urls import reverse
 
 import random
 
-from .models import Series, Seasons
+from .models import Series
 
 
 def index(request):
@@ -17,19 +17,18 @@ def index(request):
 
     series_list = Series.objects.all()
     output = ' - '.join([s.series_name for s in series_list])
-    #return HttpResponse(output)
 
-    series_number = len(Series.objects.all())
-    random_key = random.randint(1, series_number)
-    chose_serie = Series.objects.get(pk=random_key)
-    nom_resultat = chose_serie.series_name
-
-    random_season = Series.pick_random_season_episode(chose_serie)
+    series_length = len(Series.objects.all())
+    random_series_key = random.randint(1, series_length)
+    random_series = Series.objects.get(pk=random_series_key)
+    random_series_name = random_series.series_name
+    random_series_season_episode = random_series.pick_random_season_episode(random_series)
 
     res = {
-        "series": Series.objects.all(),
-        "nom": nom_resultat,
-        "saison": random_season
+        "series_list": Series.objects.all(),
+        "series_name": random_series_name,
+        "season": random_series_season_episode[0],
+        "episode":random_series_season_episode[1]
     }
     return render(request, "index.html", res)
     #return HttpResponse(chose_series)

@@ -1,5 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<script>
+    function updatePage(){
+        location.reload(true);
+    }
+</script>
 <html>
     <head>
         <title>Random generator</title>
@@ -11,13 +16,18 @@
     <h1>Hello, World!</h1>
 
     <h3>List of preset series:</h3>
-    {% for s in series %}
-        {{ s }}
+    {% for s in series_list %}
+    <li>{{ s }}</li>
     {% endfor %}
     <h3>Random result: </h3>
-    <p>Your random series:{{ nom }}</p>
-    <p>Season: {{random_season}}</p>
+    <p>Your random series: {{ series_name }}</p>
+    <p>Season: {{season}}</p>
+    <p>Episode: {{episode}}</p>
+    <p>
+    <button type="button" onclick="updatePage();"  class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-refresh"></span> Refresh
+        </button>
+    <p>
     {% endblock %}
-
     </body>
 </html>
